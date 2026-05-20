@@ -9,293 +9,298 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Upright:wght@400;500;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /*  ============================================================
-    EXAMEN · illuminated manuscript on parchment
+    EXAMEN · candlelit monastery, end of day
     -----------------------------------------------------------
-    Theme: an Ignatian retreat book left open on a desk. Each
-    movement is an illuminated page, with a hand-drawn versal
-    initial in the margin and vine ornaments closing the section.
+    Theme: a wine-dark room at night. One candle on the desk.
+    Five movements as five candles burning progressively lower —
+    by the last, only an ember. Pinyon Script title, Cormorant
+    Upright movement names. Warm gold flame against deep wine.
     ============================================================ */
 
 :root{
-  --parchment:#f0e4c8;
-  --parchment-deep:#e6d8b4;
-  --parchment-shade:#dccb9c;
-  --vellum:#f5ebcf;
-  --ink:#1f1610;
-  --ink-soft:#4a3a26;
-  --ink-faint:#7a6a52;
-  --oxblood:#5a1f1f;
-  --oxblood-light:#7a3030;
-  --gold:#a8842c;
-  --gold-bright:#c9a23e;
-  --gold-leaf:#e8c558;
-  --sage:#4a6342;
-  --rule:rgba(74, 58, 38, 0.22);
-  --rule-strong:rgba(74, 58, 38, 0.48);
+  --night:#120909;
+  --night-deep:#080404;
+  --night-warm:#1a0d0c;
+  --wine:#2a1416;
+  --wine-deep:#1f0c0e;
+  --wax:#e6d4a8;
+  --wax-dim:#a89776;
+  --wax-faint:#6a5e48;
+  --flame:#f4b656;
+  --flame-bright:#ffd47a;
+  --flame-deep:#c87830;
+  --ember:#7a2a16;
+  --rule:rgba(230, 212, 168, 0.10);
+  --rule-strong:rgba(230, 212, 168, 0.24);
 
-  --display:'EB Garamond', Georgia, serif;
-  --body:'Lora', Georgia, serif;
+  --script:'Pinyon Script', cursive;
+  --display:'Cormorant Upright', Georgia, serif;
+  --body:'Crimson Text', Georgia, serif;
   --mono:'JetBrains Mono', ui-monospace, monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{
-  background:var(--parchment);color:var(--ink);
+  background:var(--night);color:var(--wax);
   font-family:var(--body);font-weight:400;
   -webkit-font-smoothing:antialiased;
-  font-size:17px;line-height:1.65;
+  font-size:17.5px;line-height:1.65;
   min-height:100vh;
 }
-body{position:relative}
-/* Parchment grain */
+body{
+  position:relative;
+  background-image:
+    radial-gradient(ellipse 60% 40% at 50% 8%, rgba(244, 182, 86, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 50% 0%, rgba(255, 212, 122, 0.06) 0%, transparent 70%);
+}
+/* Candle smoke / soft grain */
 body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/></svg>");
-  opacity:0.10;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/></svg>");
+  opacity:0.06;mix-blend-mode:screen;
 }
-/* Aging-edge vignette */
+/* Deep room vignette — only candle area is illuminated */
 body::after{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
-  box-shadow:inset 0 0 280px rgba(90, 65, 30, 0.22);
+  box-shadow:inset 0 0 320px rgba(0, 0, 0, 0.7);
 }
 
 .container{
-  max-width:680px;margin:0 auto;padding:0 32px;
+  max-width:640px;margin:0 auto;padding:0 28px;
   position:relative;z-index:2;
 }
 
 /* ============================================================
-   HEADER — title flourish, manuscript-style
+   HEADER — single candle, script title
    ============================================================ */
 header{
   text-align:center;
-  padding:80px 0 32px;
+  padding:60px 0 28px;
   position:relative;
 }
 .title-flourish{
-  display:block;width:120px;height:40px;margin:0 auto 18px;
-  opacity:0.85;
+  display:block;width:80px;height:120px;margin:0 auto 18px;
+  filter:drop-shadow(0 0 24px rgba(244, 182, 86, 0.45));
 }
 h1{
-  font-family:var(--display);font-weight:500;font-style:italic;
-  font-size:88px;line-height:0.95;color:var(--ink);
-  letter-spacing:-0.005em;margin:0;
+  font-family:var(--script);font-weight:400;font-style:normal;
+  font-size:96px;line-height:0.9;color:var(--flame);
+  letter-spacing:0;margin:0;
+  text-shadow:0 0 16px rgba(244, 182, 86, 0.4);
 }
-h1::first-letter{color:var(--oxblood)}
 header p{
   font-family:var(--body);font-style:italic;font-weight:400;
-  font-size:16px;color:var(--ink-soft);
+  font-size:16px;color:var(--wax-dim);
   margin-top:18px;max-width:440px;margin-left:auto;margin-right:auto;
   line-height:1.55;
 }
 .head-rule{
-  display:flex;align-items:center;justify-content:center;gap:14px;
-  margin-top:24px;
-}
-.head-rule::before, .head-rule::after{
-  content:"";display:block;width:80px;height:1px;background:var(--gold);
-  opacity:0.6;
+  margin-top:20px;
 }
 .head-rule-mark{
-  font-family:var(--display);font-size:14px;
-  letter-spacing:0.32em;color:var(--gold);
-  text-transform:uppercase;font-weight:600;
+  font-family:var(--mono);font-size:10px;
+  letter-spacing:0.4em;color:var(--flame-deep);
+  text-transform:uppercase;
 }
 
 /* ============================================================
-   DATE STRIP — feast-day notation
+   DATE STRIP — nightfall notation
    ============================================================ */
 .date-strip{
   text-align:center;
-  font-family:var(--display);font-style:italic;font-weight:400;
-  color:var(--ink-soft);font-size:15px;
-  margin:36px 0 24px;letter-spacing:0.02em;
+  font-family:var(--display);font-weight:400;
+  color:var(--wax-dim);font-size:15px;
+  margin:32px 0 28px;letter-spacing:0.02em;
   display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;
 }
 .date-strip button{
   font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
-  background:transparent;border:1px solid var(--ink-soft);color:var(--ink-soft);
+  background:transparent;border:1px solid var(--wax-faint);color:var(--wax-dim);
   padding:5px 10px;cursor:pointer;transition:all .12s;
 }
-.date-strip button:hover{background:var(--ink-soft);color:var(--parchment)}
+.date-strip button:hover{background:var(--flame-deep);color:var(--night);border-color:var(--flame-deep)}
 .date-strip input[type="date"]{
-  background:transparent;border:none;border-bottom:1px solid var(--ink-soft);
-  color:var(--ink);font-family:var(--display);font-size:16px;font-style:italic;
-  padding:4px 6px;outline:none;
+  background:transparent;border:none;border-bottom:1px solid var(--wax-faint);
+  color:var(--wax);font-family:var(--display);font-size:16px;
+  padding:4px 6px;outline:none;color-scheme:dark;
 }
-.date-strip input[type="date"]:focus{border-bottom-color:var(--oxblood)}
+.date-strip input[type="date"]:focus{border-bottom-color:var(--flame)}
 
 /* ============================================================
-   TABS — manuscript folio markers
+   TABS — soft warm row
    ============================================================ */
 .tabs{
   display:flex;justify-content:center;gap:0;
-  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);
   margin-bottom:48px;flex-wrap:wrap;
-  position:sticky;top:0;background:var(--parchment);z-index:5;
+  position:sticky;top:0;background:var(--night);z-index:5;
 }
 .tab{
   background:transparent;border:none;cursor:pointer;
-  font-family:var(--display);font-style:italic;font-weight:500;
-  font-size:15px;letter-spacing:0.04em;color:var(--ink-faint);
-  padding:14px 22px;
+  font-family:var(--display);font-weight:500;
+  font-size:14px;letter-spacing:0.12em;color:var(--wax-faint);
+  padding:14px 22px;text-transform:uppercase;
   border-right:1px solid var(--rule);
-  position:relative;transition:all .12s;
+  position:relative;transition:all .15s;
 }
 .tab:last-child{border-right:none}
-.tab:hover{color:var(--ink-soft);background:rgba(168, 132, 44, 0.06)}
-.tab.active{color:var(--oxblood)}
+.tab:hover{color:var(--wax);background:rgba(244, 182, 86, 0.06)}
+.tab.active{color:var(--flame-bright)}
 .tab.active::after{
-  content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--gold);
+  content:"";position:absolute;left:50%;bottom:-3px;
+  width:6px;height:6px;background:var(--flame);border-radius:50%;
+  transform:translateX(-50%);box-shadow:0 0 8px var(--flame);
 }
 
 /* ============================================================
-   MOVEMENTS — illuminated pages
+   MOVEMENTS — five candles burning lower as we descend
    ============================================================ */
 .movement{
   position:relative;
-  margin-bottom:32px;
-  padding:32px 0 24px 84px;
-  border-bottom:1px solid var(--rule);
+  margin-bottom:80px;
+  padding:32px 0 24px 96px;
+  /* No border between — vertical rhythm by spacing only */
 }
-.movement:last-of-type{border-bottom:none}
 
-/* Versal initial — illuminated drop-cap in margin */
+/* Replace VERSAL with a CANDLE SVG in the left margin */
 .movement .versal{
-  position:absolute;left:0;top:32px;
-  width:64px;height:64px;
-  background:linear-gradient(135deg, var(--oxblood) 0%, var(--oxblood-light) 100%);
-  color:var(--gold-leaf);
-  font-family:var(--display);font-weight:700;font-style:italic;
-  font-size:48px;line-height:1;
-  display:flex;align-items:center;justify-content:center;
-  border:2px solid var(--gold);
-  box-shadow:
-    0 2px 4px rgba(0,0,0,0.2),
-    inset 0 1px 0 rgba(232, 197, 88, 0.4);
+  position:absolute;left:8px;top:18px;
+  width:64px;height:120px;
+  font-family:var(--display);font-weight:600;
+  font-size:14px;color:var(--flame);
+  display:flex;align-items:flex-end;justify-content:center;
+  letter-spacing:0.2em;
+  background-repeat:no-repeat;
+  background-position:center top;
 }
-/* Decorative vine flourish around versal */
-.movement .versal::before{
-  content:"";
-  position:absolute;left:-6px;top:-6px;right:-6px;bottom:-6px;
-  border:1px solid var(--gold);
-  pointer-events:none;
-  opacity:0.4;
-}
+/* The five candles get progressively shorter & dimmer */
+.movement:nth-of-type(1) .versal{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 120' width='64' height='120'><defs><radialGradient id='f1' cx='50%25' cy='40%25'><stop offset='0%25' stop-color='%23ffd47a'/><stop offset='100%25' stop-color='%23c87830' stop-opacity='0'/></radialGradient></defs><ellipse cx='32' cy='14' rx='14' ry='10' fill='url(%23f1)'/><path d='M 32 4 Q 28 12 30 20 Q 33 14 32 4 Z' fill='%23ffd47a'/><line x1='32' y1='18' x2='32' y2='24' stroke='%23120909' stroke-width='1.4'/><rect x='24' y='24' width='16' height='80' fill='%23e6d4a8' stroke='%236a5e48' stroke-width='0.6'/><path d='M 24 24 Q 28 22 32 24 T 40 24 L 40 32 Q 36 28 32 32 T 24 32 Z' fill='%23a89776'/></svg>")}
+.movement:nth-of-type(2) .versal{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 120' width='64' height='120'><defs><radialGradient id='f2' cx='50%25' cy='40%25'><stop offset='0%25' stop-color='%23ffd47a'/><stop offset='100%25' stop-color='%23c87830' stop-opacity='0'/></radialGradient></defs><ellipse cx='32' cy='30' rx='12' ry='9' fill='url(%23f2)'/><path d='M 32 22 Q 28 28 30 36 Q 33 30 32 22 Z' fill='%23ffd47a'/><line x1='32' y1='34' x2='32' y2='40' stroke='%23120909' stroke-width='1.4'/><rect x='24' y='40' width='16' height='64' fill='%23e6d4a8' stroke='%236a5e48' stroke-width='0.6'/><path d='M 24 40 Q 28 38 32 40 T 40 40 L 40 48 Q 36 44 32 48 T 24 48 Z' fill='%23a89776'/><path d='M 38 44 Q 42 52 40 58' stroke='%23a89776' stroke-width='1' fill='none'/></svg>")}
+.movement:nth-of-type(3) .versal{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 120' width='64' height='120'><defs><radialGradient id='f3' cx='50%25' cy='40%25'><stop offset='0%25' stop-color='%23f4b656'/><stop offset='100%25' stop-color='%23c87830' stop-opacity='0'/></radialGradient></defs><ellipse cx='32' cy='46' rx='10' ry='8' fill='url(%23f3)'/><path d='M 32 38 Q 29 44 31 50 Q 33 44 32 38 Z' fill='%23f4b656'/><line x1='32' y1='48' x2='32' y2='54' stroke='%23120909' stroke-width='1.4'/><rect x='24' y='54' width='16' height='50' fill='%23e6d4a8' stroke='%236a5e48' stroke-width='0.6'/><path d='M 24 54 Q 28 52 32 54 T 40 54 L 40 60 Q 36 56 32 60 T 24 60 Z' fill='%23a89776'/><path d='M 38 58 Q 44 68 40 78' stroke='%23a89776' stroke-width='1' fill='none'/><path d='M 26 64 Q 22 70 25 76' stroke='%23a89776' stroke-width='1' fill='none'/></svg>")}
+.movement:nth-of-type(4) .versal{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 120' width='64' height='120'><defs><radialGradient id='f4' cx='50%25' cy='40%25'><stop offset='0%25' stop-color='%23c87830'/><stop offset='100%25' stop-color='%237a2a16' stop-opacity='0'/></radialGradient></defs><ellipse cx='32' cy='66' rx='8' ry='6' fill='url(%23f4)'/><path d='M 32 60 Q 30 64 31 68 Q 33 64 32 60 Z' fill='%23f4b656'/><line x1='32' y1='66' x2='32' y2='72' stroke='%23120909' stroke-width='1.4'/><rect x='24' y='72' width='16' height='32' fill='%23a89776' stroke='%236a5e48' stroke-width='0.6'/><path d='M 24 72 Q 28 70 32 72 T 40 72 L 40 80 Q 36 76 32 80 T 24 80 Z' fill='%236a5e48'/><path d='M 38 78 Q 46 88 40 100' stroke='%236a5e48' stroke-width='1.2' fill='none'/><path d='M 26 82 Q 18 92 24 102' stroke='%236a5e48' stroke-width='1' fill='none'/></svg>")}
+.movement:nth-of-type(5) .versal{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 120' width='64' height='120'><defs><radialGradient id='f5' cx='50%25' cy='50%25'><stop offset='0%25' stop-color='%23c87830' stop-opacity='0.6'/><stop offset='100%25' stop-color='%237a2a16' stop-opacity='0'/></radialGradient></defs><ellipse cx='32' cy='88' rx='6' ry='4' fill='url(%23f5)'/><circle cx='32' cy='90' r='2.5' fill='%237a2a16'/><line x1='32' y1='90' x2='32' y2='94' stroke='%23120909' stroke-width='1.2'/><rect x='24' y='94' width='16' height='10' fill='%236a5e48' stroke='%236a5e48' stroke-width='0.6'/><path d='M 24 94 Q 28 92 32 94 T 40 94 L 40 100 Q 36 96 32 100 T 24 100 Z' fill='%236a5e48'/><path d='M 36 100 Q 50 110 38 116' stroke='%23a89776' stroke-width='0.8' fill='none' opacity='0.6'/><path d='M 28 100 Q 14 108 26 116' stroke='%23a89776' stroke-width='0.8' fill='none' opacity='0.6'/></svg>")}
+
 .movement .num{
-  position:absolute;left:0;top:104px;
-  width:64px;text-align:center;
-  font-family:var(--display);font-style:italic;font-weight:500;
-  font-size:14px;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--gold);
+  position:absolute;left:0;top:142px;
+  width:80px;text-align:center;
+  font-family:var(--mono);font-weight:400;
+  font-size:9.5px;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--wax-faint);
 }
 .movement h2{
-  font-family:var(--display);font-weight:500;font-style:italic;
-  font-size:32px;color:var(--ink);
-  letter-spacing:-0.005em;line-height:1.05;
+  font-family:var(--display);font-weight:500;font-style:normal;
+  font-size:36px;color:var(--wax);
+  letter-spacing:0.005em;line-height:1.05;
   margin-bottom:14px;
 }
-.movement h2::first-letter{color:var(--oxblood)}
+.movement h2::first-letter{color:var(--flame)}
 .movement .invitation{
   font-family:var(--body);font-style:italic;font-weight:400;
-  color:var(--ink-soft);font-size:16.5px;line-height:1.65;
-  margin-bottom:18px;
+  color:var(--wax-dim);font-size:16.5px;line-height:1.7;
+  margin-bottom:22px;
 }
 .movement textarea{
   width:100%;
-  background:var(--vellum);
+  background:var(--wine-deep);
   border:1px solid var(--rule-strong);
-  color:var(--ink);
+  color:var(--wax);
   font-family:var(--body);font-size:16px;line-height:1.7;
   padding:14px 18px;border-radius:0;
   resize:vertical;min-height:96px;
   outline:none;transition:border .12s;
+  font-style:italic;
 }
-.movement textarea:focus{border-color:var(--oxblood)}
-.movement textarea::placeholder{color:var(--ink-faint);font-style:italic}
+.movement textarea:focus{border-color:var(--flame)}
+.movement textarea::placeholder{color:var(--wax-faint);font-style:italic}
+
+/* As the candles burn lower, the writing dims slightly */
+.movement:nth-of-type(4) h2{color:var(--wax-dim)}
+.movement:nth-of-type(5) h2{color:var(--wax-faint)}
+.movement:nth-of-type(5) h2::first-letter{color:var(--ember)}
 
 /* ============================================================
-   ACTIONS — closing
+   ACTIONS — sleep well
    ============================================================ */
 .actions{
   display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
-  margin-top:48px;padding-top:32px;
-  border-top:1.5px solid var(--ink);
+  margin-top:64px;padding-top:32px;
+  border-top:1px solid var(--rule-strong);
   position:relative;
 }
 .actions::before{
   content:"☩";
   position:absolute;left:50%;top:-13px;transform:translateX(-50%);
-  background:var(--parchment);
-  font-family:var(--display);font-size:18px;color:var(--gold);
+  background:var(--night);
+  font-family:var(--display);font-size:18px;color:var(--flame-deep);
   padding:0 12px;line-height:1;
 }
 button{
-  font-family:var(--display);font-style:italic;font-weight:500;font-size:14px;
-  letter-spacing:0.06em;
-  background:var(--ink);color:var(--parchment);
-  border:none;padding:12px 24px;cursor:pointer;
+  font-family:var(--mono);font-weight:400;font-size:11px;
+  letter-spacing:0.2em;text-transform:uppercase;
+  background:var(--flame);color:var(--night-deep);
+  border:none;padding:14px 22px;cursor:pointer;
   transition:all .15s;border-radius:0;
 }
-button:hover{background:var(--oxblood)}
+button:hover{background:var(--flame-bright);box-shadow:0 0 16px rgba(244, 182, 86, 0.4)}
 button.ghost{
-  background:transparent;color:var(--ink-soft);
-  border:1px solid var(--ink-soft);
+  background:transparent;color:var(--wax-dim);
+  border:1px solid var(--wax-faint);
 }
-button.ghost:hover{background:var(--ink-soft);color:var(--parchment);border-color:var(--ink-soft)}
+button.ghost:hover{background:var(--wine);color:var(--wax);border-color:var(--wax-dim)}
 
 /* ============================================================
    HISTORY & STATS
    ============================================================ */
 .section-h{
-  font-family:var(--display);font-style:italic;font-weight:500;font-size:24px;
-  color:var(--ink);margin-bottom:22px;
-  padding-bottom:8px;border-bottom:1px solid var(--rule);
+  font-family:var(--display);font-weight:500;font-size:26px;
+  color:var(--wax);margin-bottom:22px;
+  padding-bottom:10px;border-bottom:1px solid var(--rule-strong);
 }
 .section-sub{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:0.24em;text-transform:uppercase;
-  color:var(--gold);margin:24px 0 12px;
+  font-family:var(--mono);font-size:10px;letter-spacing:0.24em;text-transform:uppercase;
+  color:var(--flame-deep);margin:32px 0 14px;
 }
 #history-search{
   width:100%;background:transparent;
   border:none;border-bottom:1px solid var(--rule-strong);
-  color:var(--ink);font-family:var(--display);font-size:18px;font-style:italic;
+  color:var(--wax);font-family:var(--body);font-size:17px;font-style:italic;
   padding:10px 4px;margin-bottom:24px;
   outline:none;
 }
-#history-search:focus{border-bottom-color:var(--oxblood)}
+#history-search:focus{border-bottom-color:var(--flame)}
+#history-search::placeholder{color:var(--wax-faint)}
 
 .history-entry{
-  padding:24px 0;border-bottom:1px solid var(--rule);
+  padding:24px 0 24px 28px;border-bottom:1px solid var(--rule);
   position:relative;
 }
 .history-entry::before{
-  content:"❦";
-  position:absolute;left:0;top:24px;
-  font-family:var(--display);font-size:14px;color:var(--gold);
+  content:"";
+  position:absolute;left:0;top:32px;
+  width:4px;height:4px;background:var(--flame);border-radius:50%;
+  box-shadow:0 0 6px var(--flame);
 }
-.history-entry{padding-left:28px}
 .history-entry:last-child{border-bottom:none}
 .history-entry .date{
-  font-family:var(--display);font-style:italic;font-weight:500;font-size:18px;
-  color:var(--oxblood);margin-bottom:10px;letter-spacing:-0.005em;
+  font-family:var(--display);font-weight:500;font-size:20px;
+  color:var(--flame-bright);margin-bottom:10px;letter-spacing:0.005em;
 }
 .history-entry .body .label{
-  font-family:var(--mono);font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--gold);font-weight:500;
+  font-family:var(--mono);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--flame-deep);font-weight:400;
   margin-top:14px;display:block;
 }
 .history-entry .body .content{
-  font-family:var(--body);font-style:italic;font-size:15.5px;color:var(--ink-soft);
-  line-height:1.65;white-space:pre-wrap;margin-top:4px;
+  font-family:var(--body);font-style:italic;font-size:15.5px;color:var(--wax-dim);
+  line-height:1.7;white-space:pre-wrap;margin-top:4px;
 }
 
-/* Stats */
+/* Stats — burnt candles row */
 .stats-summary{
   display:grid;grid-template-columns:repeat(4, 1fr);gap:0;
-  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);
   margin:18px 0 32px;
 }
 @media(max-width:520px){
@@ -304,19 +309,18 @@ button.ghost:hover{background:var(--ink-soft);color:var(--parchment);border-colo
   .stats-summary .stat:nth-child(-n+2){border-bottom:1px solid var(--rule)}
 }
 .stats-summary .stat{
-  padding:18px 10px;text-align:center;
+  padding:22px 10px;text-align:center;
   border-right:1px solid var(--rule);
-  background:transparent !important;
-  border-radius:0 !important;
+  background:transparent !important;border-radius:0 !important;
 }
 .stats-summary .stat:last-child{border-right:none}
 .stats-summary .stat .n{
-  display:block;font-family:var(--display);font-style:italic;font-weight:500;
-  font-size:34px;color:var(--ink);line-height:1;letter-spacing:-0.02em;
+  display:block;font-family:var(--display);font-weight:500;
+  font-size:36px;color:var(--flame-bright);line-height:1;letter-spacing:-0.005em;
 }
 .stats-summary .stat .l{
   font-family:var(--mono);font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--ink-faint);margin-top:10px;
+  color:var(--wax-faint);margin-top:12px;
 }
 #stats-heatmap{
   display:grid;grid-template-columns:repeat(15,1fr);gap:3px;
@@ -326,69 +330,68 @@ button.ghost:hover{background:var(--ink-soft);color:var(--parchment);border-colo
   aspect-ratio:1;
   border:1px solid var(--rule);background:transparent;
   position:relative;
-  font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);
+  font-family:var(--mono);font-size:9.5px;color:var(--wax-faint);
   display:flex;align-items:center;justify-content:center;
 }
-#stats-heatmap .cell.kept{background:var(--oxblood);border-color:var(--oxblood);color:var(--gold-leaf)}
-#stats-heatmap .cell.today{outline:2px solid var(--gold-bright);outline-offset:1px}
+#stats-heatmap .cell.kept{background:var(--flame);border-color:var(--flame);color:var(--night-deep);box-shadow:0 0 6px rgba(244, 182, 86, 0.4)}
+#stats-heatmap .cell.today{outline:2px solid var(--flame-bright);outline-offset:1px}
 #stats-heatmap .cell::after{content:attr(data-day)}
 #stats-streak-note{
-  font-family:var(--display);font-style:italic;font-size:16px;color:var(--ink-soft);
+  font-family:var(--body);font-style:italic;font-size:16px;color:var(--wax-dim);
   margin-top:18px;line-height:1.55;
 }
 #stats-words{font-size:15px;line-height:2}
 #stats-words .word{
-  font-family:var(--display);font-style:italic;
+  font-family:var(--display);font-style:normal;
   display:inline-block;margin:0 14px 6px 0;
-  color:var(--ink);
+  color:var(--wax);
 }
 #stats-words .word .count{
-  font-family:var(--mono);font-style:normal;color:var(--gold);
+  font-family:var(--mono);color:var(--flame);
   margin-left:4px;font-size:11px;letter-spacing:0.06em;
 }
 
 .empty{
-  text-align:center;color:var(--ink-faint);
+  text-align:center;color:var(--wax-faint);
   font-family:var(--body);font-style:italic;font-size:15px;
   padding:36px 0;
 }
 
 /* ============================================================
-   FOOTER — colophon
+   FOOTER — burnt-out wick
    ============================================================ */
 footer{
-  text-align:center;margin-top:60px;padding:36px 0 56px;
-  border-top:1.5px solid var(--ink);position:relative;
+  text-align:center;margin-top:80px;padding:40px 0 60px;
+  border-top:1px solid var(--rule-strong);position:relative;
 }
 footer::before{
-  content:"☩";
-  position:absolute;left:50%;top:-13px;transform:translateX(-50%);
-  background:var(--parchment);
-  font-family:var(--display);font-size:18px;color:var(--gold);
-  padding:0 12px;line-height:1;
+  content:"";
+  position:absolute;left:50%;top:-6px;transform:translateX(-50%);
+  width:12px;height:12px;border-radius:50%;
+  background:radial-gradient(circle, var(--ember) 0%, var(--night) 70%);
 }
 footer p{
-  font-family:var(--display);font-style:italic;font-size:14.5px;
-  color:var(--ink-faint);line-height:1.7;
+  font-family:var(--body);font-style:italic;font-size:14.5px;
+  color:var(--wax-faint);line-height:1.7;
 }
-footer a{color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold)}
-footer a:hover{color:var(--oxblood)}
+footer a{color:var(--flame-deep);text-decoration:none;border-bottom:1px dotted var(--flame-deep)}
+footer a:hover{color:var(--flame-bright)}
 .credit{
   font-family:var(--mono);font-size:9px;letter-spacing:0.42em;
-  color:var(--ink-faint);opacity:0.65;margin-top:18px;
+  color:var(--wax-faint);opacity:0.55;margin-top:18px;
 }
 
 @media(max-width:600px){
   .container{padding:0 22px}
-  header{padding:48px 0 24px}
-  h1{font-size:64px}
-  .movement{padding:24px 0 18px 64px}
-  .movement .versal{width:48px;height:48px;font-size:36px}
-  .movement .num{width:48px;top:80px;font-size:11px}
-  .movement h2{font-size:24px}
+  header{padding:42px 0 24px}
+  h1{font-size:72px}
+  .movement{padding:24px 0 18px 72px;margin-bottom:60px}
+  .movement .versal{width:48px;height:90px}
+  .movement .num{width:60px;top:110px;font-size:9px}
+  .movement h2{font-size:28px}
   .movement .invitation{font-size:15.5px}
   #stats-heatmap{grid-template-columns:repeat(10,1fr)}
-  .tab{padding:12px 14px;font-size:13px}
+  .tab{padding:12px 14px;font-size:12px;letter-spacing:0.1em}
 }
 </style>
 </head>
@@ -396,19 +399,37 @@ footer a:hover{color:var(--oxblood)}
 <div class="container">
 
 <header>
-  <!-- Title flourish: hand-drawn vine ornament -->
-  <svg class="title-flourish" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <g stroke="#a8842c" stroke-width="1" fill="none" stroke-linecap="round">
-      <path d="M 10 20 Q 30 8 50 20 Q 70 32 90 20 Q 100 14 110 20"/>
-      <circle cx="60" cy="20" r="4" fill="#5a1f1f" stroke="#5a1f1f"/>
-      <circle cx="60" cy="20" r="1.5" fill="#e8c558" stroke="#e8c558"/>
-      <path d="M 25 18 Q 30 12 35 16" stroke-width="0.7"/>
-      <path d="M 85 22 Q 90 28 95 24" stroke-width="0.7"/>
-    </g>
+  <!-- One candle, lit. The whole room is dark except this. -->
+  <svg class="title-flourish" viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <radialGradient id="halo" cx="50%" cy="40%">
+        <stop offset="0%" stop-color="#ffd47a" stop-opacity="0.9"/>
+        <stop offset="60%" stop-color="#f4b656" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#c87830" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="flame-grad" cx="50%" cy="60%">
+        <stop offset="0%" stop-color="#ffd47a"/>
+        <stop offset="80%" stop-color="#f4b656"/>
+        <stop offset="100%" stop-color="#c87830"/>
+      </radialGradient>
+    </defs>
+    <!-- Halo / room-light -->
+    <circle cx="40" cy="22" r="32" fill="url(#halo)"/>
+    <!-- Flame -->
+    <path d="M 40 4 Q 34 14 36 24 Q 38 16 40 4 Z M 40 4 Q 46 14 44 24 Q 42 16 40 4 Z" fill="url(#flame-grad)"/>
+    <ellipse cx="40" cy="20" rx="3" ry="6" fill="#ffd47a" opacity="0.85"/>
+    <!-- Wick -->
+    <line x1="40" y1="22" x2="40" y2="30" stroke="#120909" stroke-width="1.6"/>
+    <!-- Candle body -->
+    <rect x="30" y="30" width="20" height="80" fill="#e6d4a8" stroke="#6a5e48" stroke-width="0.6"/>
+    <!-- Wax meniscus at top -->
+    <path d="M 30 30 Q 35 27 40 30 T 50 30 L 50 40 Q 45 35 40 40 T 30 40 Z" fill="#a89776"/>
+    <!-- Wax drip on one side -->
+    <path d="M 46 38 Q 52 56 48 78" stroke="#a89776" stroke-width="1.2" fill="none"/>
   </svg>
   <h1>Examen</h1>
-  <p>five hundred years of end-of-day prayer, in ten minutes</p>
-  <div class="head-rule"><span class="head-rule-mark">S.I. · MMXXVI</span></div>
+  <p>five hundred years of end-of-day prayer · ten minutes a night</p>
+  <div class="head-rule"><span class="head-rule-mark">S.I. · candlemark</span></div>
 </header>
 
 <div class="date-strip">
@@ -428,40 +449,40 @@ footer a:hover{color:var(--oxblood)}
 <div id="view-pray" class="view">
 
   <div class="movement">
-    <div class="versal">G</div>
-    <div class="num">Movement I</div>
+    <div class="versal" aria-hidden="true"></div>
+    <div class="num">I · Gratitude</div>
     <h2>Gratitude</h2>
     <div class="invitation">Begin with thanksgiving. What did you receive today that you did not earn? A meal, a face, an unearned mercy, a moment of beauty. Name three.</div>
     <textarea data-bind="gratitude" placeholder="Three gifts of today..."></textarea>
   </div>
 
   <div class="movement">
-    <div class="versal">L</div>
-    <div class="num">Movement II</div>
+    <div class="versal" aria-hidden="true"></div>
+    <div class="num">II · Light</div>
     <h2>Ask for light</h2>
     <div class="invitation">Ask the Spirit to walk through your day with you. Not your assessment of the day — His. Pause briefly. Then begin.</div>
     <textarea data-bind="light" placeholder="Lord, show me what you want me to see..." rows="3"></textarea>
   </div>
 
   <div class="movement">
-    <div class="versal">R</div>
-    <div class="num">Movement III</div>
+    <div class="versal" aria-hidden="true"></div>
+    <div class="num">III · Review</div>
     <h2>Review the day</h2>
     <div class="invitation">Walk through the hours of today as if rewinding a film. Where did you feel most alive — what Ignatius called consolation? Where did you feel resistance, anxiety, deadness — desolation? Don't analyze. Notice.</div>
     <textarea data-bind="review" placeholder="Where I felt life. Where I felt resistance. Without judging."></textarea>
   </div>
 
   <div class="movement">
-    <div class="versal">F</div>
-    <div class="num">Movement IV</div>
+    <div class="versal" aria-hidden="true"></div>
+    <div class="num">IV · Forgiveness</div>
     <h2>Ask forgiveness</h2>
     <div class="invitation">Where did you fail to love today? Be specific. Not "I was a bad person" — "I snapped at her" or "I gossiped to him." Confess plainly. Receive forgiveness. Then let it go.</div>
     <textarea data-bind="forgiveness" placeholder="What needs to be named..."></textarea>
   </div>
 
   <div class="movement">
-    <div class="versal">T</div>
-    <div class="num">Movement V</div>
+    <div class="versal" aria-hidden="true"></div>
+    <div class="num">V · Tomorrow</div>
     <h2>Look toward tomorrow</h2>
     <div class="invitation">Ask the Spirit's help for tomorrow. What do you need? Specific people, specific situations, specific weaknesses. End with a simple "amen" — and rest.</div>
     <textarea data-bind="tomorrow" placeholder="Lord, tomorrow I need..."></textarea>
