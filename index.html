@@ -3,211 +3,419 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Examen — Ignatian end-of-day prayer</title>
-<meta name="description" content="The Ignatian Examen — five movements at the end of each day: gratitude, ask for light, review, ask forgiveness, look toward tomorrow. 500-year tradition, in 10 minutes a night.">
-<meta property="og:title" content="Examen — Ignatian end-of-day prayer">
+<title>Examen · Ignatian end-of-day prayer</title>
+<meta name="description" content="The Ignatian Examen — five movements at the end of each day: gratitude, ask for light, review, ask forgiveness, look toward tomorrow. A 500-year tradition, in ten minutes a night.">
+<meta property="og:title" content="Examen · Ignatian end-of-day prayer">
 <meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #2a2620;
-    --bg-alt: #322d26;
-    --panel: #3a342c;
-    --ink: #e8e0cf;
-    --ink-soft: #a89c84;
-    --ink-faint: #6a6052;
-    --accent: #c2a173;
-    --accent-light: #d4ba8e;
-    --serif: Georgia, "Times New Roman", serif;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    line-height: 1.7;
-    min-height: 100vh;
-    padding: 1rem;
-  }
-  .container { max-width: 600px; margin: 0 auto; }
-  header { text-align: center; padding: 2rem 0 1.5rem; }
-  header h1 {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 6vw, 2.6rem);
-    color: var(--accent);
-    margin-bottom: 0.4rem;
-    letter-spacing: -0.01em;
-  }
-  header p {
-    color: var(--ink-soft);
-    font-style: italic;
-    font-size: 0.95rem;
-  }
+/*  ============================================================
+    EXAMEN · illuminated manuscript on parchment
+    -----------------------------------------------------------
+    Theme: an Ignatian retreat book left open on a desk. Each
+    movement is an illuminated page, with a hand-drawn versal
+    initial in the margin and vine ornaments closing the section.
+    ============================================================ */
 
-  .date-strip {
-    text-align: center;
-    color: var(--ink-soft);
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
-    margin-bottom: 1.5rem;
-  }
-  .date-strip input[type="date"] {
-    background: var(--panel);
-    color: var(--ink);
-    border: 1px solid var(--ink-faint);
-    border-radius: 4px;
-    padding: 0.4rem 0.7rem;
-    font-family: inherit;
-    margin: 0 0.4rem;
-  }
+:root{
+  --parchment:#f0e4c8;
+  --parchment-deep:#e6d8b4;
+  --parchment-shade:#dccb9c;
+  --vellum:#f5ebcf;
+  --ink:#1f1610;
+  --ink-soft:#4a3a26;
+  --ink-faint:#7a6a52;
+  --oxblood:#5a1f1f;
+  --oxblood-light:#7a3030;
+  --gold:#a8842c;
+  --gold-bright:#c9a23e;
+  --gold-leaf:#e8c558;
+  --sage:#4a6342;
+  --rule:rgba(74, 58, 38, 0.22);
+  --rule-strong:rgba(74, 58, 38, 0.48);
 
-  .tabs {
-    display: flex;
-    gap: 0.4rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .tab {
-    padding: 0.55rem 1.1rem;
-    background: transparent;
-    color: var(--ink-soft);
-    border: 1px solid var(--ink-faint);
-    border-radius: 999px;
-    font-family: inherit;
-    font-size: 0.85rem;
-    cursor: pointer;
-  }
-  .tab.active {
-    background: var(--accent);
-    color: var(--bg);
-    border-color: var(--accent);
-  }
-  .tab:hover:not(.active) { border-color: var(--accent); color: var(--ink); }
+  --display:'EB Garamond', Georgia, serif;
+  --body:'Lora', Georgia, serif;
+  --mono:'JetBrains Mono', ui-monospace, monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  background:var(--parchment);color:var(--ink);
+  font-family:var(--body);font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  font-size:17px;line-height:1.65;
+  min-height:100vh;
+}
+body{position:relative}
+/* Parchment grain */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/></svg>");
+  opacity:0.10;mix-blend-mode:multiply;
+}
+/* Aging-edge vignette */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+  box-shadow:inset 0 0 280px rgba(90, 65, 30, 0.22);
+}
 
-  .movement {
-    background: var(--panel);
-    border: 1px solid var(--ink-faint);
-    border-radius: 10px;
-    padding: 1.5rem 1.75rem;
-    margin-bottom: 1.25rem;
-  }
-  .movement .num {
-    font-family: var(--serif);
-    color: var(--accent);
-    font-size: 0.85rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-  .movement h2 {
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-  }
-  .movement .invitation {
-    color: var(--ink-soft);
-    font-style: italic;
-    margin-bottom: 1rem;
-    line-height: 1.7;
-  }
-  .movement textarea {
-    width: 100%;
-    background: var(--bg-alt);
-    color: var(--ink);
-    border: 1px solid var(--ink-faint);
-    border-radius: 6px;
-    padding: 0.85rem 1rem;
-    font-family: var(--serif);
-    font-size: 1rem;
-    line-height: 1.7;
-    resize: vertical;
-    min-height: 80px;
-  }
-  .movement textarea:focus { outline: none; border-color: var(--accent); }
+.container{
+  max-width:680px;margin:0 auto;padding:0 32px;
+  position:relative;z-index:2;
+}
 
-  .actions {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    margin-top: 1.5rem;
-    flex-wrap: wrap;
-  }
-  button {
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    padding: 0.7rem 1.4rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-  button:hover { background: var(--accent-light); }
-  button.ghost {
-    background: transparent;
-    color: var(--ink-soft);
-    border: 1px solid var(--ink-faint);
-  }
-  button.ghost:hover { color: var(--ink); border-color: var(--accent); }
+/* ============================================================
+   HEADER — title flourish, manuscript-style
+   ============================================================ */
+header{
+  text-align:center;
+  padding:80px 0 32px;
+  position:relative;
+}
+.title-flourish{
+  display:block;width:120px;height:40px;margin:0 auto 18px;
+  opacity:0.85;
+}
+h1{
+  font-family:var(--display);font-weight:500;font-style:italic;
+  font-size:88px;line-height:0.95;color:var(--ink);
+  letter-spacing:-0.005em;margin:0;
+}
+h1::first-letter{color:var(--oxblood)}
+header p{
+  font-family:var(--body);font-style:italic;font-weight:400;
+  font-size:16px;color:var(--ink-soft);
+  margin-top:18px;max-width:440px;margin-left:auto;margin-right:auto;
+  line-height:1.55;
+}
+.head-rule{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin-top:24px;
+}
+.head-rule::before, .head-rule::after{
+  content:"";display:block;width:80px;height:1px;background:var(--gold);
+  opacity:0.6;
+}
+.head-rule-mark{
+  font-family:var(--display);font-size:14px;
+  letter-spacing:0.32em;color:var(--gold);
+  text-transform:uppercase;font-weight:600;
+}
 
-  .history-entry {
-    padding: 1.25rem 0;
-    border-bottom: 1px solid var(--ink-faint);
-  }
-  .history-entry:last-child { border-bottom: none; }
-  .history-entry .date {
-    color: var(--accent);
-    font-family: var(--serif);
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  .history-entry .body { color: var(--ink); font-size: 0.92rem; }
-  .history-entry .body .label {
-    color: var(--accent);
-    font-weight: 600;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 0.7rem;
-    display: block;
-  }
-  .history-entry .body .content {
-    font-family: var(--serif);
-    white-space: pre-wrap;
-    line-height: 1.7;
-    color: var(--ink);
-  }
+/* ============================================================
+   DATE STRIP — feast-day notation
+   ============================================================ */
+.date-strip{
+  text-align:center;
+  font-family:var(--display);font-style:italic;font-weight:400;
+  color:var(--ink-soft);font-size:15px;
+  margin:36px 0 24px;letter-spacing:0.02em;
+  display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;
+}
+.date-strip button{
+  font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
+  background:transparent;border:1px solid var(--ink-soft);color:var(--ink-soft);
+  padding:5px 10px;cursor:pointer;transition:all .12s;
+}
+.date-strip button:hover{background:var(--ink-soft);color:var(--parchment)}
+.date-strip input[type="date"]{
+  background:transparent;border:none;border-bottom:1px solid var(--ink-soft);
+  color:var(--ink);font-family:var(--display);font-size:16px;font-style:italic;
+  padding:4px 6px;outline:none;
+}
+.date-strip input[type="date"]:focus{border-bottom-color:var(--oxblood)}
 
-  .empty {
-    text-align: center;
-    color: var(--ink-faint);
-    padding: 1.5rem 0;
-    font-style: italic;
-  }
+/* ============================================================
+   TABS — manuscript folio markers
+   ============================================================ */
+.tabs{
+  display:flex;justify-content:center;gap:0;
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  margin-bottom:48px;flex-wrap:wrap;
+  position:sticky;top:0;background:var(--parchment);z-index:5;
+}
+.tab{
+  background:transparent;border:none;cursor:pointer;
+  font-family:var(--display);font-style:italic;font-weight:500;
+  font-size:15px;letter-spacing:0.04em;color:var(--ink-faint);
+  padding:14px 22px;
+  border-right:1px solid var(--rule);
+  position:relative;transition:all .12s;
+}
+.tab:last-child{border-right:none}
+.tab:hover{color:var(--ink-soft);background:rgba(168, 132, 44, 0.06)}
+.tab.active{color:var(--oxblood)}
+.tab.active::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--gold);
+}
 
-  footer {
-    text-align: center;
-    margin-top: 2rem;
-    color: var(--ink-faint);
-    font-size: 0.8rem;
-  }
-  footer a { color: var(--accent); text-decoration: none; }
+/* ============================================================
+   MOVEMENTS — illuminated pages
+   ============================================================ */
+.movement{
+  position:relative;
+  margin-bottom:32px;
+  padding:32px 0 24px 84px;
+  border-bottom:1px solid var(--rule);
+}
+.movement:last-of-type{border-bottom:none}
+
+/* Versal initial — illuminated drop-cap in margin */
+.movement .versal{
+  position:absolute;left:0;top:32px;
+  width:64px;height:64px;
+  background:linear-gradient(135deg, var(--oxblood) 0%, var(--oxblood-light) 100%);
+  color:var(--gold-leaf);
+  font-family:var(--display);font-weight:700;font-style:italic;
+  font-size:48px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--gold);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.2),
+    inset 0 1px 0 rgba(232, 197, 88, 0.4);
+}
+/* Decorative vine flourish around versal */
+.movement .versal::before{
+  content:"";
+  position:absolute;left:-6px;top:-6px;right:-6px;bottom:-6px;
+  border:1px solid var(--gold);
+  pointer-events:none;
+  opacity:0.4;
+}
+.movement .num{
+  position:absolute;left:0;top:104px;
+  width:64px;text-align:center;
+  font-family:var(--display);font-style:italic;font-weight:500;
+  font-size:14px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);
+}
+.movement h2{
+  font-family:var(--display);font-weight:500;font-style:italic;
+  font-size:32px;color:var(--ink);
+  letter-spacing:-0.005em;line-height:1.05;
+  margin-bottom:14px;
+}
+.movement h2::first-letter{color:var(--oxblood)}
+.movement .invitation{
+  font-family:var(--body);font-style:italic;font-weight:400;
+  color:var(--ink-soft);font-size:16.5px;line-height:1.65;
+  margin-bottom:18px;
+}
+.movement textarea{
+  width:100%;
+  background:var(--vellum);
+  border:1px solid var(--rule-strong);
+  color:var(--ink);
+  font-family:var(--body);font-size:16px;line-height:1.7;
+  padding:14px 18px;border-radius:0;
+  resize:vertical;min-height:96px;
+  outline:none;transition:border .12s;
+}
+.movement textarea:focus{border-color:var(--oxblood)}
+.movement textarea::placeholder{color:var(--ink-faint);font-style:italic}
+
+/* ============================================================
+   ACTIONS — closing
+   ============================================================ */
+.actions{
+  display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  margin-top:48px;padding-top:32px;
+  border-top:1.5px solid var(--ink);
+  position:relative;
+}
+.actions::before{
+  content:"☩";
+  position:absolute;left:50%;top:-13px;transform:translateX(-50%);
+  background:var(--parchment);
+  font-family:var(--display);font-size:18px;color:var(--gold);
+  padding:0 12px;line-height:1;
+}
+button{
+  font-family:var(--display);font-style:italic;font-weight:500;font-size:14px;
+  letter-spacing:0.06em;
+  background:var(--ink);color:var(--parchment);
+  border:none;padding:12px 24px;cursor:pointer;
+  transition:all .15s;border-radius:0;
+}
+button:hover{background:var(--oxblood)}
+button.ghost{
+  background:transparent;color:var(--ink-soft);
+  border:1px solid var(--ink-soft);
+}
+button.ghost:hover{background:var(--ink-soft);color:var(--parchment);border-color:var(--ink-soft)}
+
+/* ============================================================
+   HISTORY & STATS
+   ============================================================ */
+.section-h{
+  font-family:var(--display);font-style:italic;font-weight:500;font-size:24px;
+  color:var(--ink);margin-bottom:22px;
+  padding-bottom:8px;border-bottom:1px solid var(--rule);
+}
+.section-sub{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:0.24em;text-transform:uppercase;
+  color:var(--gold);margin:24px 0 12px;
+}
+#history-search{
+  width:100%;background:transparent;
+  border:none;border-bottom:1px solid var(--rule-strong);
+  color:var(--ink);font-family:var(--display);font-size:18px;font-style:italic;
+  padding:10px 4px;margin-bottom:24px;
+  outline:none;
+}
+#history-search:focus{border-bottom-color:var(--oxblood)}
+
+.history-entry{
+  padding:24px 0;border-bottom:1px solid var(--rule);
+  position:relative;
+}
+.history-entry::before{
+  content:"❦";
+  position:absolute;left:0;top:24px;
+  font-family:var(--display);font-size:14px;color:var(--gold);
+}
+.history-entry{padding-left:28px}
+.history-entry:last-child{border-bottom:none}
+.history-entry .date{
+  font-family:var(--display);font-style:italic;font-weight:500;font-size:18px;
+  color:var(--oxblood);margin-bottom:10px;letter-spacing:-0.005em;
+}
+.history-entry .body .label{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);font-weight:500;
+  margin-top:14px;display:block;
+}
+.history-entry .body .content{
+  font-family:var(--body);font-style:italic;font-size:15.5px;color:var(--ink-soft);
+  line-height:1.65;white-space:pre-wrap;margin-top:4px;
+}
+
+/* Stats */
+.stats-summary{
+  display:grid;grid-template-columns:repeat(4, 1fr);gap:0;
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  margin:18px 0 32px;
+}
+@media(max-width:520px){
+  .stats-summary{grid-template-columns:repeat(2,1fr)}
+  .stats-summary .stat:nth-child(2n){border-right:none}
+  .stats-summary .stat:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+}
+.stats-summary .stat{
+  padding:18px 10px;text-align:center;
+  border-right:1px solid var(--rule);
+  background:transparent !important;
+  border-radius:0 !important;
+}
+.stats-summary .stat:last-child{border-right:none}
+.stats-summary .stat .n{
+  display:block;font-family:var(--display);font-style:italic;font-weight:500;
+  font-size:34px;color:var(--ink);line-height:1;letter-spacing:-0.02em;
+}
+.stats-summary .stat .l{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--ink-faint);margin-top:10px;
+}
+#stats-heatmap{
+  display:grid;grid-template-columns:repeat(15,1fr);gap:3px;
+  margin-bottom:14px;
+}
+#stats-heatmap .cell{
+  aspect-ratio:1;
+  border:1px solid var(--rule);background:transparent;
+  position:relative;
+  font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);
+  display:flex;align-items:center;justify-content:center;
+}
+#stats-heatmap .cell.kept{background:var(--oxblood);border-color:var(--oxblood);color:var(--gold-leaf)}
+#stats-heatmap .cell.today{outline:2px solid var(--gold-bright);outline-offset:1px}
+#stats-heatmap .cell::after{content:attr(data-day)}
+#stats-streak-note{
+  font-family:var(--display);font-style:italic;font-size:16px;color:var(--ink-soft);
+  margin-top:18px;line-height:1.55;
+}
+#stats-words{font-size:15px;line-height:2}
+#stats-words .word{
+  font-family:var(--display);font-style:italic;
+  display:inline-block;margin:0 14px 6px 0;
+  color:var(--ink);
+}
+#stats-words .word .count{
+  font-family:var(--mono);font-style:normal;color:var(--gold);
+  margin-left:4px;font-size:11px;letter-spacing:0.06em;
+}
+
+.empty{
+  text-align:center;color:var(--ink-faint);
+  font-family:var(--body);font-style:italic;font-size:15px;
+  padding:36px 0;
+}
+
+/* ============================================================
+   FOOTER — colophon
+   ============================================================ */
+footer{
+  text-align:center;margin-top:60px;padding:36px 0 56px;
+  border-top:1.5px solid var(--ink);position:relative;
+}
+footer::before{
+  content:"☩";
+  position:absolute;left:50%;top:-13px;transform:translateX(-50%);
+  background:var(--parchment);
+  font-family:var(--display);font-size:18px;color:var(--gold);
+  padding:0 12px;line-height:1;
+}
+footer p{
+  font-family:var(--display);font-style:italic;font-size:14.5px;
+  color:var(--ink-faint);line-height:1.7;
+}
+footer a{color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold)}
+footer a:hover{color:var(--oxblood)}
+.credit{
+  font-family:var(--mono);font-size:9px;letter-spacing:0.42em;
+  color:var(--ink-faint);opacity:0.65;margin-top:18px;
+}
+
+@media(max-width:600px){
+  .container{padding:0 22px}
+  header{padding:48px 0 24px}
+  h1{font-size:64px}
+  .movement{padding:24px 0 18px 64px}
+  .movement .versal{width:48px;height:48px;font-size:36px}
+  .movement .num{width:48px;top:80px;font-size:11px}
+  .movement h2{font-size:24px}
+  .movement .invitation{font-size:15.5px}
+  #stats-heatmap{grid-template-columns:repeat(10,1fr)}
+  .tab{padding:12px 14px;font-size:13px}
+}
 </style>
 </head>
 <body>
 <div class="container">
 
 <header>
+  <!-- Title flourish: hand-drawn vine ornament -->
+  <svg class="title-flourish" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g stroke="#a8842c" stroke-width="1" fill="none" stroke-linecap="round">
+      <path d="M 10 20 Q 30 8 50 20 Q 70 32 90 20 Q 100 14 110 20"/>
+      <circle cx="60" cy="20" r="4" fill="#5a1f1f" stroke="#5a1f1f"/>
+      <circle cx="60" cy="20" r="1.5" fill="#e8c558" stroke="#e8c558"/>
+      <path d="M 25 18 Q 30 12 35 16" stroke-width="0.7"/>
+      <path d="M 85 22 Q 90 28 95 24" stroke-width="0.7"/>
+    </g>
+  </svg>
   <h1>Examen</h1>
   <p>five hundred years of end-of-day prayer, in ten minutes</p>
+  <div class="head-rule"><span class="head-rule-mark">S.I. · MMXXVI</span></div>
 </header>
 
 <div class="date-strip">
-  <button class="ghost" onclick="prevDay()" style="padding:0.3rem 0.7rem;font-size:0.78rem;">← prev</button>
-  praying for <input type="date" id="date-picker">
-  <button class="ghost" onclick="nextDay()" style="padding:0.3rem 0.7rem;font-size:0.78rem;">next →</button>
+  <button onclick="prevDay()">← prev</button>
+  <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);font-style:normal">For the day of</span>
+  <input type="date" id="date-picker">
+  <button onclick="nextDay()">next →</button>
 </div>
 
 <div class="tabs">
@@ -220,35 +428,40 @@
 <div id="view-pray" class="view">
 
   <div class="movement">
-    <div class="num">i</div>
+    <div class="versal">G</div>
+    <div class="num">Movement I</div>
     <h2>Gratitude</h2>
     <div class="invitation">Begin with thanksgiving. What did you receive today that you did not earn? A meal, a face, an unearned mercy, a moment of beauty. Name three.</div>
     <textarea data-bind="gratitude" placeholder="Three gifts of today..."></textarea>
   </div>
 
   <div class="movement">
-    <div class="num">ii</div>
+    <div class="versal">L</div>
+    <div class="num">Movement II</div>
     <h2>Ask for light</h2>
     <div class="invitation">Ask the Spirit to walk through your day with you. Not your assessment of the day — His. Pause briefly. Then begin.</div>
     <textarea data-bind="light" placeholder="Lord, show me what you want me to see..." rows="3"></textarea>
   </div>
 
   <div class="movement">
-    <div class="num">iii</div>
+    <div class="versal">R</div>
+    <div class="num">Movement III</div>
     <h2>Review the day</h2>
     <div class="invitation">Walk through the hours of today as if rewinding a film. Where did you feel most alive — what Ignatius called consolation? Where did you feel resistance, anxiety, deadness — desolation? Don't analyze. Notice.</div>
     <textarea data-bind="review" placeholder="Where I felt life. Where I felt resistance. Without judging."></textarea>
   </div>
 
   <div class="movement">
-    <div class="num">iv</div>
+    <div class="versal">F</div>
+    <div class="num">Movement IV</div>
     <h2>Ask forgiveness</h2>
     <div class="invitation">Where did you fail to love today? Be specific. Not "I was a bad person" — "I snapped at her" or "I gossiped to him." Confess plainly. Receive forgiveness. Then let it go.</div>
     <textarea data-bind="forgiveness" placeholder="What needs to be named..."></textarea>
   </div>
 
   <div class="movement">
-    <div class="num">v</div>
+    <div class="versal">T</div>
+    <div class="num">Movement V</div>
     <h2>Look toward tomorrow</h2>
     <div class="invitation">Ask the Spirit's help for tomorrow. What do you need? Specific people, specific situations, specific weaknesses. End with a simple "amen" — and rest.</div>
     <textarea data-bind="tomorrow" placeholder="Lord, tomorrow I need..."></textarea>
@@ -262,58 +475,35 @@
 </div>
 
 <div id="view-history" class="view" style="display:none;">
-  <div class="movement">
-    <h2 style="font-size:1.1rem;">Past examens</h2>
-    <input type="text" id="history-search" placeholder="Search across past entries" style="width:100%;background:var(--bg-alt);color:var(--ink);border:1px solid var(--ink-faint);border-radius:6px;padding:0.7rem 0.95rem;font-family:inherit;margin-bottom:1rem;">
-    <div id="history-list"></div>
-  </div>
+  <h2 class="section-h">Past examens</h2>
+  <input type="text" id="history-search" placeholder="Search across past entries">
+  <div id="history-list"></div>
 </div>
 
 <div id="view-stats" class="view" style="display:none;">
-  <div class="movement">
-    <h2 style="font-size:1.1rem;">Examen practice — the long view</h2>
-    <div id="stats-summary" class="stats-summary" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0.75rem;margin:1rem 0 1.5rem;"></div>
-    <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink-soft);margin:1.5rem 0 0.6rem;">Last 30 days</h3>
-    <div id="stats-heatmap" style="display:grid;grid-template-columns:repeat(15,1fr);gap:3px;font-family:ui-monospace,monospace;font-size:0.7rem;"></div>
-    <p id="stats-streak-note" style="font-family:var(--serif);font-style:italic;color:var(--ink-soft);font-size:0.9rem;margin-top:1rem;"></p>
-    <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink-soft);margin:1.5rem 0 0.6rem;">Most-named in gratitude (top 8)</h3>
-    <div id="stats-words" style="font-size:0.92rem;line-height:1.9;"></div>
-  </div>
+  <h2 class="section-h">The long view</h2>
+  <div id="stats-summary" class="stats-summary"></div>
+  <div class="section-sub">Last 30 days</div>
+  <div id="stats-heatmap"></div>
+  <p id="stats-streak-note"></p>
+  <div class="section-sub">Most-named in gratitude (top 8)</div>
+  <div id="stats-words"></div>
 </div>
-<style>
-  .stats-summary .stat {
-    background: var(--bg-alt); border: 1px solid var(--ink-faint); border-radius: 8px;
-    padding: 0.8rem 0.9rem; text-align: center;
-  }
-  .stats-summary .stat .n { font-family: Georgia, serif; font-size: 1.5rem; color: var(--ink); display: block; }
-  .stats-summary .stat .l { font-size: 0.68rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.08em; }
-  #stats-heatmap .cell {
-    aspect-ratio: 1; border-radius: 3px; background: var(--bg-alt); position: relative;
-    border: 1px solid rgba(0,0,0,0.06);
-  }
-  #stats-heatmap .cell.kept { background: var(--accent); }
-  #stats-heatmap .cell.today { outline: 2px solid var(--gold); outline-offset: 1px; }
-  #stats-heatmap .cell::after { content: attr(data-day); position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: var(--ink-soft); }
-  #stats-heatmap .cell.kept::after { color: var(--bg); }
-  #stats-words .word { display: inline-block; margin: 0 0.5rem 0.5rem 0; padding: 4px 12px; background: var(--bg-alt); border-radius: 999px; color: var(--ink); font-size: 0.85rem; }
-  #stats-words .word .count { color: var(--ink-soft); margin-left: 6px; font-size: 0.78rem; }
-</style>
 
 <div id="view-manage" class="view" style="display:none;">
-  <div class="movement">
-    <h2 style="font-size:1.1rem;">Manage</h2>
-    <div class="actions" style="justify-content:flex-start;">
-      <button class="ghost" id="export-btn">Export JSON</button>
-      <button class="ghost" id="import-btn">Import JSON</button>
-      <button class="ghost" id="reset-btn" style="color:#c46a4a;border-color:#5a3a2a;">Reset all</button>
-      <input type="file" id="import-file" accept=".json" style="display:none;">
-    </div>
+  <h2 class="section-h">Manage</h2>
+  <div class="actions" style="justify-content:flex-start;margin-top:0;padding-top:0;border:none">
+    <button class="ghost" id="export-btn">Export JSON</button>
+    <button class="ghost" id="import-btn">Import JSON</button>
+    <button class="ghost" id="reset-btn" style="color:var(--oxblood-light);border-color:var(--oxblood)">Reset all</button>
+    <input type="file" id="import-file" accept=".json" style="display:none;">
   </div>
 </div>
 
 <footer>
-  <p>Tradition: St. Ignatius of Loyola, 16th century. Form: yours.<br>
+  <p>Tradition: St. Ignatius of Loyola, sixteenth century. Form: yours.<br>
   <a href="https://github.com/thebigjah/examen">source</a></p>
+  <div class="credit">— PURCELLVENTURES.CO —</div>
 </footer>
 
 </div>
@@ -338,10 +528,7 @@ function fmtDate(key) {
   return dt.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 }
 
-function getDay(key) {
-  if (!all[key]) all[key] = {};
-  return all[key];
-}
+function getDay(key) { if (!all[key]) all[key] = {}; return all[key]; }
 
 function navigateTo(key) {
   currentDate = key;
@@ -387,7 +574,6 @@ window.nextDay = () => {
   navigateTo(d.toISOString().split('T')[0]);
 };
 
-// Auto-save on input
 document.querySelectorAll('[data-bind]').forEach(el => {
   el.addEventListener('input', () => {
     const day = getDay(currentDate);
@@ -457,12 +643,10 @@ function resetAll() {
 }
 
 function renderStats() {
-  // Days that count as "kept": have any of the 5 movements with content
   const FIELDS = ['gratitude','light','review','forgiveness','tomorrow'];
   const keptDays = Object.entries(all).filter(([d, e]) => FIELDS.some(f => (e[f] || '').trim().length > 0))
     .map(([d]) => d).sort();
 
-  // Total + streak
   const total = keptDays.length;
   const today = todayKey();
   let streak = 0;
@@ -473,7 +657,6 @@ function renderStats() {
     d.setDate(d.getDate() - 1);
     cur = d.toISOString().split('T')[0];
   }
-  // Last-30 completion rate
   const last30 = [];
   for (let i = 29; i >= 0; i--) {
     const d = new Date(today + 'T00:00:00');
@@ -482,19 +665,17 @@ function renderStats() {
   }
   const last30Kept = last30.filter(d => keptDays.includes(d)).length;
 
-  // Average movements per kept day (depth, not just attendance)
   const avgMovements = total
     ? (keptDays.reduce((sum, d) => sum + FIELDS.filter(f => (all[d][f] || '').trim()).length, 0) / total).toFixed(1)
     : '—';
 
   document.getElementById('stats-summary').innerHTML = `
-    <div class="stat"><span class="n">${total}</span><span class="l">total kept</span></div>
-    <div class="stat"><span class="n">${streak}</span><span class="l">day streak</span></div>
-    <div class="stat"><span class="n">${last30Kept}/30</span><span class="l">last 30d</span></div>
-    <div class="stat"><span class="n">${avgMovements}/5</span><span class="l">avg depth</span></div>
+    <div class="stat"><span class="n">${total}</span><span class="l">Total kept</span></div>
+    <div class="stat"><span class="n">${streak}</span><span class="l">Day streak</span></div>
+    <div class="stat"><span class="n">${last30Kept}/30</span><span class="l">Last 30d</span></div>
+    <div class="stat"><span class="n">${avgMovements}/5</span><span class="l">Avg depth</span></div>
   `;
 
-  // Heatmap last 30
   document.getElementById('stats-heatmap').innerHTML = last30.map(d => {
     const kept = keptDays.includes(d);
     const isToday = d === today;
@@ -502,15 +683,13 @@ function renderStats() {
     return `<div class="cell ${kept ? 'kept' : ''} ${isToday ? 'today' : ''}" data-day="${day}" title="${d}${kept ? ' · kept' : ''}"></div>`;
   }).join('');
 
-  // Streak note
   const note = document.getElementById('stats-streak-note');
   if (streak >= 7) note.textContent = `${streak} days in a row. The rhythm is doing its work.`;
   else if (streak >= 3) note.textContent = `${streak} days. Don't break it tonight.`;
   else if (streak === 0 && last30Kept > 0) note.textContent = `You've missed a few. Tonight is the next examen.`;
-  else if (total === 0) note.textContent = `No examens yet. The first one is the hardest. Try writing one line in each movement.`;
-  else note.textContent = ``;
+  else if (total === 0) note.textContent = `No examens yet. The first is the hardest. Write one line in each movement.`;
+  else note.textContent = '';
 
-  // Top words in gratitude
   const stopwords = new Set('a an the and or but in on for to of with my our this that is was were be been being had have has having do did i you he she we they it not so as if at by from up out down too very can will would could should about into over after before because when where who what which how all some'.split(' '));
   const wordCounts = {};
   keptDays.forEach(d => {
